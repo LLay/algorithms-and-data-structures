@@ -1,12 +1,13 @@
 # Uses python3
 import sys
-
+from collections import defaultdict
 def get_majority_element(a, left, right):
-    if left == right:
-        return -1
-    if left + 1 == right:
-        return a[left]
-    #write your code here
+    dic = defaultdict(lambda: 0, {})
+    for i in range(len(a)):
+        dic[a[i]] += 1
+    for key in dic:
+        if dic[key] > len(a)/2:
+            return key
     return -1
 
 if __name__ == '__main__':
